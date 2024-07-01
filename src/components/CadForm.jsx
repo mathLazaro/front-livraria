@@ -4,12 +4,23 @@ import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
+import { BACK_URL } from "../services/serverConection";
+import { isAuthenticated } from "../services/auth";
 
 const schema = yup
     .object({
-        email: yup.string().email("Email inválido").required("Email obrigatório"),
-        senha: yup.string().min(4, "Senha com no mínimo 4 caracteres").required(),
-        senhaConfirma: yup.string().required("Confirme a senha").oneOf([yup.ref("senha")], "As senhas devem coincidir!"),
+        email: yup
+            .string()
+            .email("Email inválido")
+            .required("Email obrigatório"),
+        senha: yup
+            .string()
+            .min(4, "Senha com no mínimo 4 caracteres")
+            .required(),
+        senhaConfirma: yup
+            .string()
+            .required("Confirme a senha")
+            .oneOf([yup.ref("senha")], "As senhas devem coincidir!"),
         nome: yup.string().min(1, "É obrigatório inserir o nome").required(),
         telefone: yup.string().min(11, "Insira um número completo").required(),
     })
@@ -24,19 +35,18 @@ export default function CadastroForm({ switchState }) {
         resolver: yupResolver(schema),
     });
 
+    const [errorMsg, setErrorMsg] = useState("");
+
     const submit = async (data) => {
-        data['role'] = true
-        console.log(data);
-
+        data["role"] = true;
         try {
-            const response = await axios.post("http://localhost:8080/usuarios/", data);
+            const response = await axios.post(`${BACK_URL}/usuarios/`, data);
 
-            if (response.status === 201) {
-                console.log("cadastrado");
-                // sessionStorage.setItem("token", response.data);
+            if (response.status === 200) {
+                switchState("login");
             }
         } catch (error) {
-            // console.log(error.response.data);
+            setErrorMsg(error.response.data.msg);
         }
     };
 
@@ -114,10 +124,11 @@ export default function CadastroForm({ switchState }) {
                             </div>
                         </div>
                     </div>
-
-                    <div hidden>Mensagem de erro</div>
                     <button type="submit">Cadastrar</button>
                 </form>
+            </div>
+            <div className="error-div">
+                <p className="error">{errorMsg}</p>
             </div>
             <div className="change-state-login">
                 <p>Já possui conta?</p>

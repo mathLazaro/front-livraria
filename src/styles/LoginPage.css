@@ -43,6 +43,7 @@ form {
 .divForms {
     margin: 0 0;
     font-size: 100%;
+    padding-bottom: 0;
 }
 
 .divForms h2 {
@@ -70,7 +71,7 @@ form {
 form button {
     flex: 1;
     width: 20vh;
-    margin: 8% auto;
+    margin: 4% auto;
 }
 
 .row-div {
@@ -96,4 +97,8 @@ form button {
     font-size: 1em;
     margin: 1% 0;
     font-weight: bold;
+}
+
+.error-div {
+    margin-top: 0;
 }

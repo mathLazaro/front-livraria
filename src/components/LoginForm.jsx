@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
+import { BACK_URL } from "../services/serverConection";
+import { isAuthenticated } from "../services/auth";
 
 const schema = yup
     .object({
@@ -17,7 +19,7 @@ const schema = yup
     })
     .required();
 
-export default function LoginForm({ switchState }) {
+export default function LoginForm({ switchState, navigate }) {
     const {
         register,
         handleSubmit,
@@ -26,18 +28,24 @@ export default function LoginForm({ switchState }) {
         resolver: yupResolver(schema),
     });
 
+    const [errorMsg, setErrorMsg] = useState("");
+
     const submit = async (data) => {
-        console.log(data);
         try {
             const response = await axios.post(
-                "http://localhost:8080/usuarios/login",
+                `${BACK_URL}/usuarios/login`,
                 data
             );
-            // sessionStorage.setItem("auth", response.data);
-            console.log(response);
+
+            sessionStorage.setItem("idUser", response.data.data.id);
+            sessionStorage.setItem("token", response.data.token);
+
+            setErrorMsg("");
+
+            navigate(isAuthenticated());
         } catch (error) {
             console.log(error);
-            console.log("erro");
+            setErrorMsg(error.response.data.msg);
         }
     };
 
@@ -73,6 +81,9 @@ export default function LoginForm({ switchState }) {
                         <button type="submit">Entrar</button>
                     </form>
                 </div>
+            </div>
+            <div className="error-div">
+                <p className="error">{errorMsg}</p>
             </div>
             <div className="change-state-login">
                 <p>Não possui conta?</p>

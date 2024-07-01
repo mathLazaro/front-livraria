@@ -66,3 +66,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.errorPage {
+  display: block;
+  margin: 50vh auto;
+}
