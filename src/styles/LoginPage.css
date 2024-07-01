@@ -1,0 +1,99 @@
+img {
+    position: absolute;
+    filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+.background-auth {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(85, 83, 106, 0.88);
+    border: 1px solid black;
+    justify-content: space-between;
+    width: 50%;
+    margin: 7.5vh auto;
+    padding: 3%;
+}
+
+.change-state-login {
+    display: flex;
+    justify-content: center;
+}
+
+.change-state-login > button {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.change-state-button:hover {
+    border-color: rgba(0, 0, 0, 0);
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.divForms {
+    margin: 0 0;
+    font-size: 100%;
+}
+
+.divForms h2 {
+    margin-bottom: 1%;
+}
+
+.inputDiv {
+    padding-top: 1%;
+}
+
+.inputDiv input {
+    width: 80%;
+    font-size: 1em;
+    padding: 2% 2%;
+}
+
+.inputDiv label {
+    display: block;
+    text-align: left;
+    margin-left: 10%;
+    flex: 1;
+
+}
+
+form button {
+    flex: 1;
+    width: 20vh;
+    margin: 8% auto;
+}
+
+.row-div {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space;
+}
+
+.column-div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.divForms > .login {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.error {
+    color: rgb(255, 85, 55);
+    font-size: 1em;
+    margin: 1% 0;
+    font-weight: bold;
+}
