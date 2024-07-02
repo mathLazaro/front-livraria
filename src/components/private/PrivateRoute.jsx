@@ -2,17 +2,24 @@ import React from "react";
 import { isAuthenticated, getUserRole } from "../../services/auth";
 import AdmPage from "./admin/AdmPage";
 import UserPage from "./user/UserPage";
-import { Error401 } from "../error/ErrorPages";
+import { Error401, Error403 } from "../error/ErrorPages";
 
-export default function PrivateRoute() {
-    // para o projeto apenas o usuário com id === 1 será considerado como administrador
+// para o projeto apenas o usuário com id === 1 será considerado como administrador
+export default function PrivateRoute({ adminLevel }) {
     if (isAuthenticated()) {
         console.log(getUserRole());
-        if (getUserRole() === "1") {
-            // retorna a pagina de usuário administrador
+        const idStoraged = getUserRole();
+
+        if (adminLevel && idStoraged !== "1") {
+            // cliente tenta acessar a pagina adm (forbidden)
+            return Error403();
+        }
+        if (adminLevel && idStoraged === "1") {
+            // admin acessa pagina
             return <AdmPage />;
-        } else {
-            // retorna a pagina de usuário comum
+        }
+        else {
+            // admin ou user acessam a pagina de usuario
             return <UserPage />;
         }
     } else {

@@ -4,7 +4,7 @@ import "./styles/index.css";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/auth/LoginPage.jsx";
 import PrivateRoute from "./components/private/PrivateRoute.jsx";
-import {Error404} from "./components/error/ErrorPages.jsx";
+import { Error404 } from "./components/error/ErrorPages.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -14,7 +14,17 @@ const routes = createBrowserRouter([
     },
     {
         path: "/app",
-        element: <PrivateRoute />,
+
+        children: [
+            {
+                path: "/app/admin",
+                element: <PrivateRoute adminLevel={true} />,
+            },
+            {
+                path: "/app/",
+                element: <PrivateRoute adminLevel={false} />,
+            },
+        ],
     },
 ]);
 

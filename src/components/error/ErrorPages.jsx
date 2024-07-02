@@ -21,3 +21,13 @@ export function Error401() {
         </div>
     );
 }
+
+export function Error403() {
+    return (
+        <div className="errorPage">
+            <h2>
+                A página que você está tentando acessar requer conta com nível administrador. <Link to={"/app/"}>Votar</Link>
+            </h2>
+        </div>
+    );
+}
