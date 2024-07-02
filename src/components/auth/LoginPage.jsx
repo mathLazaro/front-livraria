@@ -1,10 +1,10 @@
-import "../styles/LoginPage.css";
+import "../../styles/LoginPage.css";
 import LoginForm from "./LoginForm";
-import background from "../assets/bookstore-background.jpg";
+import background from "../../assets/bookstore-background.jpg";
 import CadastroForm from "./CadForm";
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "../services/auth";
+import { isAuthenticated } from "../../services/auth";
 
 export default function LoginPage() {
     const [component, setComponent] = useState("login");
@@ -18,10 +18,7 @@ export default function LoginPage() {
             <div className="background-auth">
                 <h1>Livraria</h1>
                 {component === "login" ? (
-                    <LoginForm
-                        switchState={setComponent}
-                        navigate={setAuth}
-                    />
+                    <LoginForm switchState={setComponent} loginCallback={setAuth} />
                 ) : (
                     <CadastroForm switchState={setComponent} />
                 )}

@@ -25,7 +25,7 @@ img {
     justify-content: center;
 }
 
-.change-state-login > button {
+.change-state-login>button {
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -87,7 +87,7 @@ form button {
     flex: 1;
 }
 
-.divForms > .login {
+.divForms>.login {
     width: 70%;
     margin: 0 auto;
 }

@@ -3,23 +3,19 @@ import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { BACK_URL } from "../services/serverConection";
-import { isAuthenticated } from "../services/auth";
+import { BACK_URL } from "../../services/serverConection";
+import { isAuthenticated, setAuth } from "../../services/auth";
 
+// formuláro de submissão
 const schema = yup
     .object({
-        email: yup
-            .string()
-            .email("Email inválido")
-            .required("Email obrigatório"),
-        senha: yup
-            .string()
-            .min(4, "Senha com no mínimo 4 caracteres")
-            .required(),
+        email: yup.string().email("Email inválido").required("Email obrigatório"),
+        senha: yup.string().min(4, "Senha com no mínimo 4 caracteres").required(),
     })
     .required();
 
-export default function LoginForm({ switchState, navigate }) {
+export default function LoginForm({ switchState, loginCallback }) {
+    // funções e propriedades do yup
     const {
         register,
         handleSubmit,
@@ -28,23 +24,24 @@ export default function LoginForm({ switchState, navigate }) {
         resolver: yupResolver(schema),
     });
 
+    // observer de erro
     const [errorMsg, setErrorMsg] = useState("");
 
-    const submit = async (data) => {
+    // lida com a ação de login
+    const handleLogin = async (data) => {
         try {
-            const response = await axios.post(
-                `${BACK_URL}/usuarios/login`,
-                data
-            );
+            const response = await axios.post(`${BACK_URL}/usuarios/login`, data);
 
-            sessionStorage.setItem("idUser", response.data.data.id);
-            sessionStorage.setItem("token", response.data.token);
+            // armazena o token e id do usuário
+            setAuth(response.data.data.id, response.data.token);
+
+            console.log(sessionStorage);
 
             setErrorMsg("");
 
-            navigate(isAuthenticated());
+            // seta a variavel observada para redirecionamento de página
+            loginCallback(isAuthenticated());
         } catch (error) {
-            console.log(error);
             setErrorMsg(error.response.data.msg);
         }
     };
@@ -54,7 +51,7 @@ export default function LoginForm({ switchState, navigate }) {
             <div className="divForms">
                 <h2>Login</h2>
                 <div className="login">
-                    <form onSubmit={handleSubmit(submit)}>
+                    <form onSubmit={handleSubmit(handleLogin)}>
                         <div className="inputDiv">
                             <label htmlFor="email">Email</label>
                             <input

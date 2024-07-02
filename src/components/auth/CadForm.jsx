@@ -4,19 +4,12 @@ import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { BACK_URL } from "../services/serverConection";
-import { isAuthenticated } from "../services/auth";
+import { BACK_URL } from "../../services/serverConection";
 
 const schema = yup
     .object({
-        email: yup
-            .string()
-            .email("Email inválido")
-            .required("Email obrigatório"),
-        senha: yup
-            .string()
-            .min(4, "Senha com no mínimo 4 caracteres")
-            .required(),
+        email: yup.string().email("Email inválido").required("Email obrigatório"),
+        senha: yup.string().min(4, "Senha com no mínimo 4 caracteres").required(),
         senhaConfirma: yup
             .string()
             .required("Confirme a senha")
@@ -81,9 +74,7 @@ export default function CadastroForm({ switchState }) {
                                 <p className="error">{errors.senha?.message}</p>
                             </div>
                             <div className="inputDiv">
-                                <label htmlFor="senha-confirma">
-                                    Confirme a senha
-                                </label>
+                                <label htmlFor="senha-confirma">Confirme a senha</label>
                                 <input
                                     type="password"
                                     className="inputField"
@@ -91,9 +82,7 @@ export default function CadastroForm({ switchState }) {
                                     name="senha-confirma"
                                     {...register("senhaConfirma")}
                                 />
-                                <p className="error">
-                                    {errors.senhaConfirma?.message}
-                                </p>
+                                <p className="error">{errors.senhaConfirma?.message}</p>
                             </div>
                         </div>
                         <div className="column-div">
@@ -118,9 +107,7 @@ export default function CadastroForm({ switchState }) {
                                     maskChar=" "
                                     {...register("telefone")}
                                 />
-                                <p className="error">
-                                    {errors.telefone?.message}
-                                </p>
+                                <p className="error">{errors.telefone?.message}</p>
                             </div>
                         </div>
                     </div>
