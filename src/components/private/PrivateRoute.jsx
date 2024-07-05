@@ -7,7 +7,7 @@ import { Error401, Error403 } from "../error/ErrorPages";
 // para o projeto apenas o usuário com id === 1 será considerado como administrador
 export default function PrivateRoute({ adminLevel }) {
     if (isAuthenticated()) {
-        console.log(getUserRole());
+        // console.log(getUserRole());
         const idStoraged = getUserRole();
 
         if (adminLevel && idStoraged !== "1") {
