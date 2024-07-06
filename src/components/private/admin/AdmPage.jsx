@@ -1,17 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 
-import "../../../styles/App.css"
+import "../../../styles/App.css";
+import "../../../styles/AdmPage.css"
 
+import Header from "../Header";
+import AddLivro from "./AddLivro";
+import DelLivro from "./DelLivro";
+import DelUser from "./DelUser";
 
 export default function AdmPage() {
+    const [component, setComponent] = useState("ADD_LIVRO");
+
     return (
-        <div>
-            <h1>ADM</h1>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui tenetur earum facere
-                nulla dicta at laborum optio officia impedit soluta praesentium accusamus, excepturi
-                eaque quibusdam molestiae sunt consequuntur autem cum?
-            </p>
-        </div>
+        <>
+            <Header />
+            <h2>Funções de administrador</h2>
+            <div className="column-div">
+                <div className="row-div">
+                    <button
+                        onClick={() => {
+                            setComponent("ADD_LIVRO");
+                        }}
+                    >
+                        Adicionar estoque
+                    </button>
+                    <button
+                        onClick={() => {
+                            setComponent("DEL_LIVRO");
+                        }}
+                    >
+                        Remover estoque
+                    </button>
+                    <button
+                        onClick={() => {
+                            setComponent("DEL_USER");
+                        }}
+                    >
+                        Deletar usuário
+                    </button>
+                </div>
+                <div className="function">
+                    {component === "ADD_LIVRO" ? (
+                        <AddLivro />
+                    ) : component === "DEL_LIVRO" ? (
+                        <DelLivro />
+                    ) : (
+                        <DelUser />
+                    )}
+                </div>
+            </div>
+        </>
     );
 }

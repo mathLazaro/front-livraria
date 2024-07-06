@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    background-color: #111111;
+    font-size: 0.9em;
+}
+
+header>h1 {
+
+    margin-right: 34.5vw;
+}
+
+header>button {
+    margin: 2vw;
+    background-color: #111111;
+}

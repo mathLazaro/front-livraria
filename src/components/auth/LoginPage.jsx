@@ -22,7 +22,7 @@ export default function LoginPage() {
         pageState()
     ) : (
         <>
-            <img src={background} alt="background image" />
+            <img id="background-image" src={background} alt="background image" />
             <div className="background-auth">
                 <h1>Livraria</h1>
                 {component === "login" ? (

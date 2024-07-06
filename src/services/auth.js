@@ -6,6 +6,15 @@ export function setAuth(idUser, token) {
     sessionStorage.setItem(TOKEN, token);
 }
 
+export function logOut() {
+    sessionStorage.removeItem(USER_ROLE);
+    sessionStorage.removeItem(TOKEN);
+}
+
+export function getAuth() {
+    return sessionStorage.getItem("token");
+}
+
 export const isAuthenticated = () => {
     return !!sessionStorage.getItem("token");
 };

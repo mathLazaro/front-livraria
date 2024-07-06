@@ -35,7 +35,7 @@ export default function LoginForm({ switchState, loginCallback }) {
             // armazena o token e id do usuário
             setAuth(response.data.data.id, response.data.token);
 
-            console.log(sessionStorage);
+            // console.log(sessionStorage);
 
             setErrorMsg("");
 
@@ -51,7 +51,7 @@ export default function LoginForm({ switchState, loginCallback }) {
             <div className="divForms">
                 <h2>Login</h2>
                 <div className="login">
-                    <form onSubmit={handleSubmit(handleLogin)}>
+                    <form className="form-div-login" onSubmit={handleSubmit(handleLogin)}>
                         <div className="inputDiv">
                             <label htmlFor="email">Email</label>
                             <input
