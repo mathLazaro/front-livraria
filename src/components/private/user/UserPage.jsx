@@ -1,18 +1,24 @@
 import React from "react";
-
-import "../../../styles/App.css"
-
+import { Link } from "react-router-dom";
+import "../../../styles/UserPage.css";
 
 export default function UserPage() {
     return (
-        <div>
-            <h1>USER PAGE</h1>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores delectus
-                accusantium doloribus mollitia debitis, nostrum numquam similique dolorem voluptatum
-                tempore atque, ipsum cumque, voluptatem explicabo suscipit quod at incidunt
-                reiciendis?
-            </p>
+        <div className="container">
+            <div className="sidebar">
+                <h3>Bem vindo [nome]!</h3>
+                <p>Nesta tela poderá visualizar sua coleção.</p>
+
+                <Link className="link" to="/settings">
+                    Ver Perfil
+                </Link>
+            </div>
+            <div className="content">
+                <h1>Coleção</h1>
+                <p>
+                    [COLEÇÃO]
+                </p>
+            </div>
         </div>
     );
 }

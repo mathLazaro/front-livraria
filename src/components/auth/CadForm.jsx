@@ -35,8 +35,9 @@ export default function CadastroForm({ switchState }) {
         try {
             const response = await axios.post(`${BACK_URL}/usuarios/`, data);
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 switchState("login");
+                alert("Usuário criado com sucesso!")
             }
         } catch (error) {
             setErrorMsg(error.response.data.msg);
