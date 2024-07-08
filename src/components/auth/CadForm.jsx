@@ -101,7 +101,7 @@ export default function CadastroForm({ switchState }) {
                             <div className="inputDiv">
                                 <label htmlFor="telefone">Telefone</label>
                                 <InputMask
-                                    className="inputDiv"
+                                    className="input-mask"
                                     id="telefone"
                                     name="telefone"
                                     mask="(99) 99999 - 9999"

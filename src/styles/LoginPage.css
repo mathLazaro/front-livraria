@@ -56,10 +56,6 @@
 
 .inputDiv label {
     display: block;
-    text-align: left;
-    margin-left: 10%;
-    flex: 1;
-
 }
 
 .form-div-login button {
