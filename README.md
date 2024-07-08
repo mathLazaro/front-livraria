@@ -28,7 +28,7 @@ Além disso, o usuário administrador possui acesso à rota "/app/admin", para q
 return (
     <div className="errorPage">
         <h2>
-            A página que você está tentando acessar requer conta com nível administrador. <Link to={"/app/"}>Votar</Link>
+            A página que você está tentando acessar requer conta com nível administrador. <Link to={"/app/"}>Voltar</Link>
         </h2>
     </div>
 );
@@ -73,10 +73,7 @@ Dessa maneira, foram implementadas as seguintes funções:
 
 * adicionar livros no banco de dados, utilizando `API de livros do google` (tratado no back-end)*; 
 * buscar livros no banco de dados; 
-* remover livros do banco de dados*; 
-* adicionar livros ao carrinho; 
-* remover livros do carrinho; 
-* simulação de finalização da compra; 
+* remover livros do banco de dados*;  
 * fazer login;
 * criar usuário; 
 * deletar usuário*;

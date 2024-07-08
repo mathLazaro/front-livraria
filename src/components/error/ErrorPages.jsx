@@ -26,7 +26,7 @@ export function Error403() {
     return (
         <div className="errorPage">
             <h2>
-                A página que você está tentando acessar requer conta com nível administrador. <Link to={"/app/"}>Votar</Link>
+                A página que você está tentando acessar requer conta com nível administrador. <Link to={"/app/"}>Voltar</Link>
             </h2>
         </div>
     );
