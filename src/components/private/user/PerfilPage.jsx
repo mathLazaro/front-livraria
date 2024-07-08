@@ -4,19 +4,23 @@ import { useForm } from "react-hook-form";
 import { getUserRole, getAuth } from "../../../services/auth";
 import { BACK_URL } from "../../../services/serverConection";
 import "../../../styles/UserPage.css";
+import axios from "axios";
 
 export default function Perfil({ user, setUser, handleViewChange }) {
   const { register, handleSubmit } = useForm();
   const [isEditing, setIsEditing] = useState(false);
 
   const onSubmit = async (data) => {
-    const userId = getUserRole();
-    const token = getAuth();
-
+    const usuarioId = getUserRole();
+    const url = `${BACK_URL}/usuarios/${usuarioId}`
+    const config = {
+      headers: {
+          Authorization: "Bearer " + getAuth()
+      }
+    }
+    data.id = Number(usuarioId)
     try {
-
-      /* PUT Request para atualizar os dados do usuário */
-
+      const res = await axios.put(url, data, config)
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error.message);
     }
