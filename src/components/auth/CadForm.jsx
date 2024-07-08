@@ -35,8 +35,9 @@ export default function CadastroForm({ switchState }) {
         try {
             const response = await axios.post(`${BACK_URL}/usuarios/`, data);
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 switchState("login");
+                alert("Usuário criado com sucesso!")
             }
         } catch (error) {
             setErrorMsg(error.response.data.msg);
@@ -100,7 +101,7 @@ export default function CadastroForm({ switchState }) {
                             <div className="inputDiv">
                                 <label htmlFor="telefone">Telefone</label>
                                 <InputMask
-                                    className="inputDiv"
+                                    className="input-mask"
                                     id="telefone"
                                     name="telefone"
                                     mask="(99) 99999 - 9999"

@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+.sidebar {
+    width: 30%;
+    padding: 20px;
+    background-color: #111111;
+    border-radius: 20%;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+.content {
+    width: 110%;
+    padding: 20px;
+    background-color: #111111;
+    border-radius: 20%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+}
+.edit-profile-section {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.edit-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.data-field {
+    margin-bottom: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #111111;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+.input-mask,
+.inputField {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+#inputsBusca {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+
+.listaLivros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-height: 500px;
+    overflow-y: auto;
+
+}
+.livro {
+    display: flex;
+    flex-direction: column;
+}
+#consultar {
+    margin: 0;
+    margin-bottom: 20px;
+}
