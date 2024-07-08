@@ -54,12 +54,6 @@
     padding-top: 1%;
 }
 
-.inputDiv input {
-    width: 80%;
-    font-size: 1em;
-    padding: 2% 2%;
-}
-
 .inputDiv label {
     display: block;
     text-align: left;
