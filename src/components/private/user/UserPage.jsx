@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getUserRole } from "../../../services/auth";
 import Header from "../Header";
-import Perfil from "./Perfil";
+import Perfil from "./PerfilPage";
 import { BACK_URL } from "../../../services/serverConection";
 import "../../../styles/UserPage.css";
 
