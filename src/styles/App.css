@@ -4,7 +4,6 @@
   text-align: center;
   flex-basis: 100%;
   width: 100%;
-  height: 100vh;
   flex: 1;
   overflow: hidden;
 }
@@ -46,4 +45,34 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.buscaLivro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.listaLivros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  padding: 0;
+}
+
+.livro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+
+.livro p {
+  margin: 0;
 }

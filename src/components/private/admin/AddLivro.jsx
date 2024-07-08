@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CardItem from "./CardItem";
 import axios from "axios";
 import { BACK_URL } from "../../../services/serverConection";
 import { getAuth } from "../../../services/auth";
