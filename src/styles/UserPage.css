@@ -48,8 +48,8 @@
     margin-bottom: 15px;
 }
 
-input[type="text"],
-input[type="email"],
+
+.form-group > input,
 .input-mask,
 .inputField {
     margin-left: 20px;
