@@ -37,7 +37,7 @@ export default function CadastroForm({ switchState }) {
 
             if (response.status === 201) {
                 switchState("login");
-                alert("Usuário criado com sucesso!")
+                alert("Usuário cadastrado com sucesso!")
             }
         } catch (error) {
             setErrorMsg(error.response.data.msg);

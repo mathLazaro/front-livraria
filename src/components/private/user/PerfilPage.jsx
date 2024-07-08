@@ -12,15 +12,18 @@ export default function Perfil({ user, setUser, handleViewChange }) {
 
   const onSubmit = async (data) => {
     const usuarioId = getUserRole();
-    const url = `${BACK_URL}/usuarios/${usuarioId}`
+    const url = `${BACK_URL}/usuarios/${usuarioId}`;
     const config = {
       headers: {
-          Authorization: "Bearer " + getAuth()
+        Authorization: "Bearer " + getAuth()
       }
-    }
-    data.id = Number(usuarioId)
+    };
+    data.id = Number(usuarioId);
     try {
-      const res = await axios.put(url, data, config)
+      const res = await axios.put(url, data, config);
+      alert("Dados atualizados com sucesso!")
+      window.location.reload();
+      handleViewChange("UserPage");
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error.message);
     }
