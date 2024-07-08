@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BACK_URL } from "../../../services/serverConection";
 import axios from "axios";
 import "../../../styles/App.css";
+import Header from "../Header"
 
 export default function UserPage() {
     const [livros, setLivros] = useState([]);
@@ -35,7 +36,7 @@ export default function UserPage() {
 
     return (
         <div>
-            <h1>USER PAGE</h1>
+            <Header/>
             <form className="buscaLivro" onSubmit={handleSubmit}>
                 <div>
                     <input type="text" placeholder="Digite o titulo" id="titulo" name="titulo" />
